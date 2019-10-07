@@ -1,5 +1,6 @@
 #include <iostream>
 #include<stdlib.h>
+#include<ctime>
 using namespace std;
 
 void task1()
@@ -128,11 +129,45 @@ void task1()
 void task2()
 {
 
+	srand(time(NULL));
+	int randNum = (rand() % 10) + 1;
+	
+	bool gameWon = false;
+	int playerGuess;
+
+	cout << "I'm going to come up with a number between 1 and 10. Keep on guessing until you get it right!" << endl;
+
+	while (gameWon == false)
+	{
+		cout << "What is your guess? ";
+		cin >> playerGuess;
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+			cout << "Invalid data. Please try again!" << endl;
+		}
+		else
+		{
+			if (playerGuess == randNum)
+			{
+				gameWon == true;
+				cout << "You guessed my number correctly! You won!" << endl;
+				break;
+			}
+			else
+			{
+				cout << "Close, but no cigar! Try again!" << endl;
+			}
+		}
+	}
+
 }
 
 int main()
 {
-	task1();
+	//task1();
+	task2();
 	system("pause");
 	return 0;
 }
